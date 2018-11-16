@@ -1,37 +1,72 @@
+// Styling for the navbar
 #mainNav {
-  background-color: fade-out($secondary, 0.1);
-  @include heading-font;
+  background-color: $gray-900;
+  .navbar-toggler {
+    font-size: 12px;
+    right: 0;
+    padding: 13px;
+    text-transform: uppercase;
+    color: white;
+    border: 0;
+    background-color: $primary;
+    @include heading-font;
+  }
   .navbar-brand {
     color: $primary;
+    @include script-font;
+    &.active,
+    &:active,
+    &:focus,
+    &:hover {
+      color: darken($primary, 10%);
+    }
   }
   .navbar-nav {
     .nav-item {
       .nav-link {
-        color: fade-out($white, 0.3);
-
-        font-weight: 800;
-      }
-      &.active {
-        .nav-link {
+        font-size: 90%;
+        font-weight: 400;
+        padding: 0.75em 0;
+        letter-spacing: 1px;
+        color: white;
+        @include heading-font;
+        &.active,
+        &:hover {
           color: $primary;
         }
       }
     }
   }
-  @media (min-width: 992px) {
+}
+@media(min-width:992px) {
+  #mainNav {
+    padding-top: 25px;
+    padding-bottom: 25px;
+    -webkit-transition: padding-top 0.3s, padding-bottom 0.3s;
+    -moz-transition: padding-top 0.3s, padding-bottom 0.3s;
+    transition: padding-top 0.3s, padding-bottom 0.3s;
+    border: none;
+    background-color: transparent;
+    .navbar-brand {
+      font-size: 1.75em;
+      -webkit-transition: all 0.3s;
+      -moz-transition: all 0.3s;
+      transition: all 0.3s;
+    }
     .navbar-nav {
       .nav-item {
         .nav-link {
-          font-size: 0.9rem;
-          &:hover {
-            color: fade-out($white, 0.6);
-          }
+          padding: 1.1em 1em !important;
         }
-        &.active {
-          .nav-link:hover {
-            color: $primary;
-          }
-        }
+      }
+    }
+    &.navbar-shrink {
+      padding-top: 0;
+      padding-bottom: 0;
+      background-color: $gray-900;
+      .navbar-brand {
+        font-size: 1.25em;
+        padding: 12px 0;
       }
     }
   }
